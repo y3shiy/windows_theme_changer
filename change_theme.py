@@ -24,6 +24,18 @@ def apply_light_theme():
     programs.change_alacritty_theme('alabaster')
     programs.change_nvim_theme('light')
 
+def apply_red_accent():
+    windows.set_accent_color('#AFCFFF')
+
+    windows.set_accent_on_start_taskbar(True)
+    windows.set_accent_on_title_bars_and_borders(True)
+
+    windows.set_accent_on_start_taskbar(False)
+    windows.set_accent_on_title_bars_and_borders(False)
+
+    windows.set_transparency(False)
+    windows.restart_explorer()
+
 def main(args: list[str]):
     if len(args) < 2:
         raise RuntimeError('Too few arguments')
@@ -33,6 +45,8 @@ def main(args: list[str]):
             apply_dark_theme()
         case 'light':
             apply_light_theme()
+        case 'red':
+            apply_red_accent()
         case _: 
             raise RuntimeError(f'Unknown theme name "{theme}"')
 
